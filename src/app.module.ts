@@ -3,9 +3,10 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { UsersModule } from './app/users/users.module';
 // import { ConfigModule } from '@nestjs/config';
 import { typeOrmConfig } from 'typeorm.config';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(typeOrmConfig), UsersModule],
+  imports: [TypeOrmModule.forRoot(typeOrmConfig), UsersModule, AuthModule],
   controllers: [],
   providers: [],
 })
