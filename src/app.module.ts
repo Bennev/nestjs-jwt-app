@@ -4,9 +4,11 @@ import { UsersModule } from './app/users/users.module';
 // import { ConfigModule } from '@nestjs/config';
 import { typeOrmConfig } from 'typeorm.config';
 import { AuthModule } from './auth/auth.module';
+import { CompaniesModule } from './app/companies/companies.module';
+import { LocationsModule } from './app/locations/locations.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(typeOrmConfig), UsersModule, AuthModule],
+  imports: [TypeOrmModule.forRoot(typeOrmConfig), UsersModule, AuthModule, CompaniesModule, LocationsModule],
   controllers: [],
   providers: [],
 })
