@@ -1,8 +1,11 @@
 import { 
   Column,
+  CreateDateColumn,
+  DeleteDateColumn,
   Entity,
   PrimaryGeneratedColumn,
-} from 'typeorm';
+  UpdateDateColumn,
+} from 'typeorm'
 
 @Entity({ name: 'accountables' })
 export class AccountableEntity {
@@ -17,4 +20,13 @@ export class AccountableEntity {
 
   @Column()
   address: string;
+  
+  @CreateDateColumn({ name: 'created_at' })
+  createdAt: string;
+
+  @UpdateDateColumn({ name: 'update_at' })
+  updatedAt: string;
+
+  @DeleteDateColumn({ name: 'delete_at' })
+  deletedAt: string;
 }

@@ -47,8 +47,8 @@ export class CompaniesController {
   }
 
   @Delete(':id')
-  @HttpCode(HttpStatus.NO_CONTENT)
-  async remove(@Param('id', new ParseUUIDPipe()) id: string) {
-    return await this.companiesService.remove(id);
+  // @HttpCode(HttpStatus.NO_CONTENT)
+  async destroy(@Param('id', new ParseUUIDPipe()) id: string) {
+    return await this.companiesService.destroy(id);
   }
 }

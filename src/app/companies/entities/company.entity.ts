@@ -26,12 +26,12 @@ export class CompanyEntity {
   @OneToMany(type => LocationEntity, location => location.company)
   location: LocationEntity[];
 
-  // @CreateDateColumn({ name: 'created_at' })
-  // createdAt: string;
+  @CreateDateColumn({ name: 'created_at' })
+  createdAt: string;
 
-  // @UpdateDateColumn({ name: 'update_at' })
-  // updatedAt: string;
+  @UpdateDateColumn({ name: 'update_at' })
+  updatedAt: string;
 
-  // @DeleteDateColumn({ name: 'delete_at' })
-  // deletedAt: string;
+  @DeleteDateColumn({ name: 'delete_at' })
+  deletedAt: string;
 }

@@ -6,9 +6,15 @@ import { typeOrmConfig } from 'typeorm.config';
 import { AuthModule } from './auth/auth.module';
 import { CompaniesModule } from './app/companies/companies.module';
 import { LocationsModule } from './app/locations/locations.module';
+import { AccountablesModule } from './app/accountables/accountables.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(typeOrmConfig), UsersModule, AuthModule, CompaniesModule, LocationsModule],
+  imports: [TypeOrmModule.forRoot(typeOrmConfig), 
+    UsersModule, 
+    AuthModule, 
+    CompaniesModule, 
+    LocationsModule, 
+    AccountablesModule],
   controllers: [],
   providers: [],
 })

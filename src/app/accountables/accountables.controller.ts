@@ -33,6 +33,11 @@ export class AccountablesController {
   //   return this.accountablesService.findOne(+id);
   // }
 
+  @Get(':id')
+  async findOne(@Param('id', new ParseUUIDPipe()) id: string) {
+    return await this.accountablesService.findOneByOrFail({ id });
+  }
+
   @Put(':id')
   update(
     @Param('id', new ParseUUIDPipe()) id: string,

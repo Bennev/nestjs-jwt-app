@@ -41,7 +41,7 @@ export class CompaniesService {
     return await this.companiesRepository.save(company)
   }
 
-  async remove(id: string) {
+  async destroy(id: string) {
     await this.companiesRepository.findOneByOrFail({ id })
     this.companiesRepository.softDelete({ id })
   }
