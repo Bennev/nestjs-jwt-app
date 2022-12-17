@@ -48,7 +48,7 @@ export class AccountablesController {
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  async remove(@Param('id', new ParseUUIDPipe()) id: string) {
-    return await this.accountablesService.remove(id);
+  async destroy(@Param('id', new ParseUUIDPipe()) id: string) {
+    return await this.accountablesService.destroy(id);
   }
 }

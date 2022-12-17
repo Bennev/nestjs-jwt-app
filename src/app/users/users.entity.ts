@@ -4,10 +4,13 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
   } from 'typeorm'
 import { hashSync } from 'bcrypt'
+import { CompanyEntity } from '../companies/entities/company.entity';
+import { TicketEntity } from '../tickets/entities/ticket.entity';
 
 @Entity({ name: 'users' })
 export class UsersEntity {
@@ -25,6 +28,15 @@ export class UsersEntity {
 
   @Column()
   password: string;
+
+  @OneToMany(type => CompanyEntity, company => company.user)
+  companies: CompanyEntity[];
+
+  @OneToMany(type => TicketEntity, ticket => ticket.createdByUser)
+  ticketsCreated: TicketEntity[];
+
+  @OneToMany(type => TicketEntity, ticket => ticket.answeredByUser)
+  ticketsAnswered: TicketEntity[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;

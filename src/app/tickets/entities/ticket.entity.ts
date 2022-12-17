@@ -3,35 +3,36 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
-  JoinColumn,
   ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm'
-import { LocationEntity } from 'src/app/locations/entities/location.entity';
+} from 'typeorm';
+
 import { UsersEntity } from 'src/app/users/users.entity';
 
-@Entity({ name: 'companies' })
-export class CompanyEntity {
+@Entity({ name: 'tickets' })
+export class TicketEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
-  name: string;
+  title: string;
+
+  @ManyToOne(() => UsersEntity, (user) => user.ticketsCreated)
+  createdByUser: UsersEntity;
+
+  @ManyToOne(() => UsersEntity, (user) => user.ticketsAnswered)
+  answeredByUser: UsersEntity;
+
+  @Column({ default: "PENDENTE" })
+  status: string;
 
   @Column()
-  cnpj: string;
+  nameLocation: string;
 
   @Column()
-  description: string;
-
-  @OneToMany(type => LocationEntity, location => location.company)
-  locations: LocationEntity[];
-
-  @ManyToOne(() => UsersEntity, user => user.companies)
-  user: UsersEntity;
-
+  addressLocation: string;
+  
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;
 

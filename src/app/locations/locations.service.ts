@@ -41,7 +41,7 @@ export class LocationsService {
     return await this.locationsRepository.save(location)
   }
 
-  async remove(id: string) {
+  async destroy(id: string) {
     await this.locationsRepository.findOneByOrFail({ id })
     this.locationsRepository.softDelete({ id })
   }

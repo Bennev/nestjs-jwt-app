@@ -42,7 +42,7 @@ export class AccountablesService {
     return await this.accountablesRepository.save(accountable)
   }
 
-  async remove(id: string) {
+  async destroy(id: string) {
     await this.accountablesRepository.findOneByOrFail({ id })
     this.accountablesRepository.softDelete({ id })
   }

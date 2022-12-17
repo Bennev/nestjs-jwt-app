@@ -19,7 +19,7 @@ export class CompaniesService {
 
   async findAll() {
     return await this.companiesRepository.find({ 
-      select: ['id', 'name', 'cnpj', 'description', 'location'],
+      select: ['id', 'name', 'cnpj', 'description', 'user', 'locations'],
     })
   }
 

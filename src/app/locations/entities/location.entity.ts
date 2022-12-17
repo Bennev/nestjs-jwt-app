@@ -20,8 +20,9 @@ export class LocationEntity {
   @Column()
   address: string;
 
-  @ManyToOne(type => CompanyEntity, company => company.location)
-  company: CompanyEntity[];
+  @ManyToOne(() => CompanyEntity, company => company.locations)
+  company: CompanyEntity;
+
   
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;

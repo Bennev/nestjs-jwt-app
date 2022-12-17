@@ -1,5 +1,6 @@
 import { IsNotEmpty, IsString } from "class-validator";
 import { LocationEntity } from "src/app/locations/entities/location.entity";
+import { UsersEntity } from "src/app/users/users.entity";
 
 export class CreateCompanyDto {
   @IsNotEmpty()
@@ -14,6 +15,7 @@ export class CreateCompanyDto {
   @IsString()
   description: string;
 
-  // @IsString()
-  location: LocationEntity[];
+  @IsNotEmpty()
+  @IsString()
+  userId: string;
 }

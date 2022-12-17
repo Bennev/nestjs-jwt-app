@@ -49,7 +49,7 @@ export class LocationsController {
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  async remove(@Param('id', new ParseUUIDPipe()) id: string) {
-    return await this.locationsService.remove(id);
+  async destroy(@Param('id', new ParseUUIDPipe()) id: string) {
+    return await this.locationsService.destroy(id);
   }
 }

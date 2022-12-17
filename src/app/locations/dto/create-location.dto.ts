@@ -12,5 +12,5 @@ export class CreateLocationDto {
 
   @IsNotEmpty()
   @IsString()
-  company: CompanyEntity[];
+  companyId: string;
 }

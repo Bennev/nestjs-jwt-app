@@ -1,5 +1,3 @@
-import { PartialType } from '@nestjs/swagger';
-import { CreateLocationDto } from './create-location.dto';
 import { IsNotEmpty, IsString } from "class-validator";
 
 export class UpdateLocationDto {
