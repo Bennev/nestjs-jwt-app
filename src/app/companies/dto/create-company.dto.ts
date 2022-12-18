@@ -1,4 +1,5 @@
 import { IsNotEmpty, IsString } from "class-validator";
+import { AccountableEntity } from "src/app/accountables/entities/accountable.entity";
 import { LocationEntity } from "src/app/locations/entities/location.entity";
 import { UsersEntity } from "src/app/users/users.entity";
 
@@ -17,5 +18,9 @@ export class CreateCompanyDto {
 
   @IsNotEmpty()
   @IsString()
-  userId: string;
+  user: UsersEntity;
+
+  locations: LocationEntity[];
+
+  accountable: AccountableEntity[];
 }

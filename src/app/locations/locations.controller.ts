@@ -28,6 +28,11 @@ export class LocationsController {
     return await this.locationsService.findAll();
   }
 
+  @Get('byCompanyId/:companyId')
+  async findAllByCompanyId(@Param('companyId', new ParseUUIDPipe()) companyId: string) {
+    return await this.locationsService.findAllByCompanyId(companyId);
+  }
+
   // @Get(':id')
   // findOne(@Param('id') id: string) {
   //   return this.locationsService.findOne(+id);

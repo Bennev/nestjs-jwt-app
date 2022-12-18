@@ -4,13 +4,7 @@ import { IsNotEmpty, IsString } from "class-validator";
 import { UsersEntity } from 'src/app/users/users.entity';
 
 export class UpdateTicketDto {
-
-  @IsNotEmpty()
-  createdByUser: UsersEntity;
-
-  @IsNotEmpty()
   answeredByUser: UsersEntity;
-
 
   status: string;
 

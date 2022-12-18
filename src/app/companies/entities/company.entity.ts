@@ -11,6 +11,7 @@ import {
 } from 'typeorm'
 import { LocationEntity } from 'src/app/locations/entities/location.entity';
 import { UsersEntity } from 'src/app/users/users.entity';
+import { AccountableEntity } from 'src/app/accountables/entities/accountable.entity';
 
 @Entity({ name: 'companies' })
 export class CompanyEntity {
@@ -26,11 +27,14 @@ export class CompanyEntity {
   @Column()
   description: string;
 
+  @ManyToOne(() => UsersEntity, user => user.companies)
+  user: UsersEntity;
+  
   @OneToMany(type => LocationEntity, location => location.company)
   locations: LocationEntity[];
 
-  @ManyToOne(() => UsersEntity, user => user.companies)
-  user: UsersEntity;
+  @OneToMany(type => AccountableEntity, accountable => accountable.company)
+  accountable: AccountableEntity[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;

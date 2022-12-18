@@ -23,6 +23,20 @@ export class LocationsService {
     })
   }
 
+  async findAllByCompanyId(companyId: string) {
+    return await this.locationsRepository.find({
+      relations: {
+        company: true
+      },
+      where: {
+        company: {
+          id: companyId
+        }
+      },
+      select: ['id', 'name', 'address'],
+    })
+  }
+
   // findOne(id: number) {
   //   return `This action returns a #${id} location`;
   // }

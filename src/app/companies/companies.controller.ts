@@ -28,6 +28,11 @@ export class CompaniesController {
     return await this.companiesService.findAll();
   }
 
+  @Get('byUserId/:userId')
+  async findAllByUserId(@Param('userId', new ParseUUIDPipe()) userId: string) {
+    return await this.companiesService.findAllByUserId(userId);
+  }
+
   // @Get(':id')
   // findOne(@Param('id') id: string) {
   //   return this.companiesService.findOne(+id);

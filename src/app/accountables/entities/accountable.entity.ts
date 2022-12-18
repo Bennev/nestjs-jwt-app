@@ -1,10 +1,12 @@
 import { CompanyEntity } from 'src/app/companies/entities/company.entity';
+import { LocationEntity } from 'src/app/locations/entities/location.entity';
 import { 
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
-  OneToOne,
+  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
@@ -23,8 +25,11 @@ export class AccountableEntity {
   @Column()
   address: string;
 
-  // @OneToOne(type => CompanyEntity, company => company.location)
-  // company: CompanyEntity[];
+  @ManyToOne(() => CompanyEntity, (company) => company.accountable)
+  company: CompanyEntity;
+
+  @ManyToOne(() => LocationEntity, (location) => location.accountable)
+  location: LocationEntity;
   
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;

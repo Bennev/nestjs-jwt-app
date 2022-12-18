@@ -1,4 +1,5 @@
 import { IsNotEmpty, IsString } from "class-validator";
+import { UsersEntity } from "src/app/users/users.entity";
 
 export class CreateTicketDto {
   @IsNotEmpty()
@@ -7,7 +8,7 @@ export class CreateTicketDto {
 
   @IsNotEmpty()
   @IsString()
-  userId: string;
+  createdByUser: UsersEntity;
 
   @IsNotEmpty()
   @IsString()
@@ -16,8 +17,4 @@ export class CreateTicketDto {
   @IsNotEmpty()
   @IsString()
   addressLocation: string;
-
-  userIdCreated: string;
-
-  userIdAnswered: string;
 }

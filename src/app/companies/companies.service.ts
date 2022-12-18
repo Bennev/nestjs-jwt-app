@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FindOptionsWhere, Repository } from 'typeorm'
+import { UsersEntity } from '../users/users.entity';
 import { CreateCompanyDto } from './dto/create-company.dto';
 import { UpdateCompanyDto } from './dto/update-company.dto';
 import { CompanyEntity } from './entities/company.entity';
@@ -23,9 +24,19 @@ export class CompaniesService {
     })
   }
 
-  // async findOne(id: number) {
-  //   return `This action returns a #${id} company`;
-  // }
+  async findAllByUserId(userId: string) {
+    return await this.companiesRepository.find({
+      relations: {
+        user: true
+      },
+      where: {
+        user: {
+          id: userId
+        }
+      },
+      select: ['id', 'name', 'cnpj', 'description', 'locations'],
+    })
+  }
 
   async findOneByOrFail(where: FindOptionsWhere<CompanyEntity>) {
     try {
