@@ -19,13 +19,23 @@ export class AccountablesController {
   constructor(private readonly accountablesService: AccountablesService) {}
 
   @Post('register')
-  create(@Body() createAccountableDto: CreateAccountableDto) {
-    return this.accountablesService.create(createAccountableDto);
+  async create(@Body() createAccountableDto: CreateAccountableDto) {
+    return await this.accountablesService.create(createAccountableDto);
   }
 
   @Get()
-  findAll() {
-    return this.accountablesService.findAll();
+  async index() {
+    return await this.accountablesService.findAll();
+  }
+
+  @Get('byCompanyId/:companyId')
+  async findAllByCompanyId(@Param('companyId', new ParseUUIDPipe()) companyId: string) {
+    return await this.accountablesService.findAllByCompanyId(companyId);
+  }
+
+  @Get('byLocationId/:locationId')
+  async findAllByLocationId(@Param('locationId', new ParseUUIDPipe()) locationId: string) {
+    return await this.accountablesService.findAllByLocationId(locationId);
   }
 
   // @Get(':id')
@@ -39,11 +49,11 @@ export class AccountablesController {
   }
 
   @Put(':id')
-  update(
+  async update(
     @Param('id', new ParseUUIDPipe()) id: string,
     @Body() updateAccountableDto: UpdateAccountableDto,
   ) {
-    return this.accountablesService.update(id, updateAccountableDto);
+    return await this.accountablesService.update(id, updateAccountableDto);
   }
 
   @Delete(':id')

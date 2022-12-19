@@ -28,6 +28,11 @@ export class TicketsController {
     return await this.ticketsService.findAll();
   }
 
+  @Get('byUserId/:userId')
+  async findAllByUserId(@Param('userId', new ParseUUIDPipe()) userId: string) {
+    return await this.ticketsService.findAllByUserId(userId);
+  }
+
   // @Get(':id')
   // findOne(@Param('id') id: string) {
   //   return this.ticketsService.findOne(+id);

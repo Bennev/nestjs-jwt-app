@@ -19,7 +19,24 @@ export class TicketsService {
 
   async findAll() {
     return await this.ticketsRepository.find({ 
-      select: ['id', 'title', 'createdByUser', 'answeredByUser', 'status', 'nameLocation', 'addressLocation'],
+      relations: {
+        createdByUser: true
+      },
+      select: ['id', 'title', 'createdByUser', 'answeredByUser', 'status', 'nameLocation', 'addressLocation', 'createdAt', 'updatedAt'],
+    })
+  }
+
+  async findAllByUserId(userId: string) {
+    return await this.ticketsRepository.find({
+      relations: {
+        createdByUser: true
+      },
+      where: {
+        createdByUser: {
+          id: userId
+        }
+      },
+      select: ['id', 'title', 'createdByUser', 'answeredByUser', 'status', 'nameLocation', 'addressLocation', 'createdAt', 'updatedAt'],
     })
   }
 

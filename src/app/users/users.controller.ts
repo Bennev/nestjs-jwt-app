@@ -32,9 +32,8 @@ export class UsersController {
     return await this.usersService.store(body);
   }
 
-  @UseGuards(AuthGuard('jwt'))
+  // @UseGuards(AuthGuard('jwt'))
   @Get(':id')
-  // @Get('home')
   async show(@Param('id', new ParseUUIDPipe()) id: string) {
     return await this.usersService.findOneByOrFail({ id });
   }

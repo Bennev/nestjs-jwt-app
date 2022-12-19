@@ -34,7 +34,7 @@ export class CompanyEntity {
   locations: LocationEntity[];
 
   @OneToMany(type => AccountableEntity, accountable => accountable.company)
-  accountable: AccountableEntity[];
+  accountables: AccountableEntity[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;

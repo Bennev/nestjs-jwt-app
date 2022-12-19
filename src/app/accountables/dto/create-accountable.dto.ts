@@ -1,4 +1,6 @@
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty, IsOptional, IsString } from "class-validator";
+import { CompanyEntity } from "src/app/companies/entities/company.entity";
+import { LocationEntity } from "src/app/locations/entities/location.entity";
 
 export class CreateAccountableDto {
   @IsNotEmpty()
@@ -12,4 +14,12 @@ export class CreateAccountableDto {
   @IsNotEmpty()
   @IsString()
   address: string;
+
+  @IsNotEmpty()
+  @IsOptional()
+  company: CompanyEntity;
+
+  @IsNotEmpty()
+  @IsOptional()
+  location: LocationEntity;
 }

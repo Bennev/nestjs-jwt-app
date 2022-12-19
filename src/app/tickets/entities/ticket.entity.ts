@@ -34,11 +34,11 @@ export class TicketEntity {
   addressLocation: string;
   
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: string;
+  createdAt: Date;
 
   @UpdateDateColumn({ name: 'update_at' })
-  updatedAt: string;
+  updatedAt: Date;
 
   @DeleteDateColumn({ name: 'delete_at' })
-  deletedAt: string;
+  deletedAt: Date;
 }

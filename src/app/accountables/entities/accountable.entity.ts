@@ -6,7 +6,6 @@ import {
   DeleteDateColumn,
   Entity,
   ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
@@ -25,10 +24,10 @@ export class AccountableEntity {
   @Column()
   address: string;
 
-  @ManyToOne(() => CompanyEntity, (company) => company.accountable)
+  @ManyToOne(() => CompanyEntity, company => company.accountables)
   company: CompanyEntity;
 
-  @ManyToOne(() => LocationEntity, (location) => location.accountable)
+  @ManyToOne(() => LocationEntity, location => location.accountables)
   location: LocationEntity;
   
   @CreateDateColumn({ name: 'created_at' })

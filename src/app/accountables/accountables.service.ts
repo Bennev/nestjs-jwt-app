@@ -24,6 +24,34 @@ export class AccountablesService {
     })
   }
 
+  async findAllByCompanyId(companyId: string) {
+    return await this.accountablesRepository.find({
+      relations: {
+        company: true
+      },
+      where: {
+        company: {
+          id: companyId
+        }
+      },
+      select: ['id', 'name', 'phone', 'address'],
+    })
+  }
+
+  async findAllByLocationId(locationId: string) {
+    return await this.accountablesRepository.find({
+      relations: {
+        location: true
+      },
+      where: {
+        location: {
+          id: locationId
+        }
+      },
+      select: ['id', 'name', 'phone', 'address'],
+    })
+  }
+
   // findOne(id: number) {
   //   return `This action returns a #${id} accountable`;
   // }

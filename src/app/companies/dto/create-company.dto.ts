@@ -22,5 +22,5 @@ export class CreateCompanyDto {
 
   locations: LocationEntity[];
 
-  accountable: AccountableEntity[];
+  accountables: AccountableEntity[];
 }
