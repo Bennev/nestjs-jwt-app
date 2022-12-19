@@ -21,7 +21,7 @@ import { UsersService } from './users.service';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @UseGuards(AuthGuard('jwt'))
+  // @UseGuards(AuthGuard('jwt'))
   @Get()
   async index() {
     return await this.usersService.findAll();
@@ -38,7 +38,7 @@ export class UsersController {
     return await this.usersService.findOneByOrFail({ id });
   }
 
-  @UseGuards(AuthGuard('jwt'))
+  // @UseGuards(AuthGuard('jwt'))
   @Put(':id')
   async update(
     @Param('id', new ParseUUIDPipe()) id: string, 
@@ -47,7 +47,7 @@ export class UsersController {
     return await this.usersService.update(id, body);
   }
 
-  @UseGuards(AuthGuard('jwt'))
+  // @UseGuards(AuthGuard('jwt'))
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   async destroy(@Param('id', new ParseUUIDPipe()) id: string) {

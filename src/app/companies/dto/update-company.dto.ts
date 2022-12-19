@@ -1,15 +1,15 @@
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty, IsOptional, IsString } from "class-validator";
 
 export class UpdateCompanyDto {
   @IsNotEmpty()
-  @IsString()
+  @IsOptional()
   name: string;
 
   @IsNotEmpty()
-  @IsString()
+  @IsOptional()
   cnpj: string;
 
   @IsNotEmpty()
-  @IsString()
+  @IsOptional()
   description: string;
 }
