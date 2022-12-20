@@ -20,7 +20,7 @@ export class AccountablesService {
 
   async findAll() {
     return await this.accountablesRepository.find({ 
-      select: ['id', 'name', 'phone', 'address'],
+      select: ['id', 'name', 'phone', 'address', 'principal'],
     })
   }
 
@@ -34,7 +34,7 @@ export class AccountablesService {
           id: companyId
         }
       },
-      select: ['id', 'name', 'phone', 'address'],
+      select: ['id', 'name', 'phone', 'address', 'principal'],
     })
   }
 
@@ -48,13 +48,9 @@ export class AccountablesService {
           id: locationId
         }
       },
-      select: ['id', 'name', 'phone', 'address'],
+      select: ['id', 'name', 'phone', 'address', 'principal'],
     })
   }
-
-  // findOne(id: number) {
-  //   return `This action returns a #${id} accountable`;
-  // }
 
   async findOneByOrFail(where: FindOptionsWhere<AccountableEntity>) {
     try {

@@ -1,17 +1,15 @@
-import { PartialType } from '@nestjs/swagger';
-import { IsNotEmpty, IsString } from 'class-validator';
-import { CreateAccountableDto } from './create-accountable.dto';
+import { IsNotEmpty, IsOptional } from 'class-validator';
 
 export class UpdateAccountableDto {
   @IsNotEmpty()
-  @IsString()
+  @IsOptional()
   name: string;
 
   @IsNotEmpty()
-  @IsString()
+  @IsOptional()
   phone: string;
 
   @IsNotEmpty()
-  @IsString()
+  @IsOptional()
   address: string;
 }

@@ -20,25 +20,25 @@ import { UpdateAccountableDto } from './dto/update-accountable.dto';
 export class AccountablesController {
   constructor(private readonly accountablesService: AccountablesService) {}
 
-  // @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'))
   @Post('register')
   async create(@Body() createAccountableDto: CreateAccountableDto) {
     return await this.accountablesService.create(createAccountableDto);
   }
 
-  // @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'))
   @Get()
   async index() {
     return await this.accountablesService.findAll();
   }
 
-  // @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'))
   @Get('byCompanyId/:companyId')
   async findAllByCompanyId(@Param('companyId', new ParseUUIDPipe()) companyId: string) {
     return await this.accountablesService.findAllByCompanyId(companyId);
   }
 
-  // @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'))
   @Get('byLocationId/:locationId')
   async findAllByLocationId(@Param('locationId', new ParseUUIDPipe()) locationId: string) {
     return await this.accountablesService.findAllByLocationId(locationId);
@@ -49,13 +49,13 @@ export class AccountablesController {
   //   return this.accountablesService.findOne(+id);
   // }
 
-  // @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'))
   @Get(':id')
   async findOne(@Param('id', new ParseUUIDPipe()) id: string) {
     return await this.accountablesService.findOneByOrFail({ id });
   }
 
-  // @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'))
   @Put(':id')
   async update(
     @Param('id', new ParseUUIDPipe()) id: string,
@@ -64,7 +64,7 @@ export class AccountablesController {
     return await this.accountablesService.update(id, updateAccountableDto);
   }
 
-  // @UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'))
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   async destroy(@Param('id', new ParseUUIDPipe()) id: string) {

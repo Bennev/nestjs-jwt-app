@@ -24,6 +24,9 @@ export class AccountableEntity {
   @Column()
   address: string;
 
+  @Column({ default: false })
+  principal: boolean;
+
   @ManyToOne(() => CompanyEntity, company => company.accountables)
   company: CompanyEntity;
 

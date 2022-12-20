@@ -22,4 +22,8 @@ export class CreateAccountableDto {
   @IsNotEmpty()
   @IsOptional()
   location: LocationEntity;
+
+  @IsNotEmpty()
+  @IsOptional()
+  principal: boolean;
 }

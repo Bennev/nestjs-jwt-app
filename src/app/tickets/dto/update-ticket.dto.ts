@@ -1,20 +1,21 @@
-import { PartialType } from '@nestjs/swagger';
-import { CreateTicketDto } from './create-ticket.dto';
-import { IsNotEmpty, IsString } from "class-validator";
+
+import { IsNotEmpty, IsOptional } from "class-validator";
 import { UsersEntity } from 'src/app/users/users.entity';
 
 export class UpdateTicketDto {
   @IsNotEmpty()
-  @IsString()
+  @IsOptional()
   answeredByUser: UsersEntity;
 
+  @IsNotEmpty()
+  @IsOptional()
   status: string;
 
   @IsNotEmpty()
-  @IsString()
+  @IsOptional()
   nameLocation: string;
 
   @IsNotEmpty()
-  @IsString()
+  @IsOptional()
   addressLocation: string;
 }
